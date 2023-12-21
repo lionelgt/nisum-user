@@ -11,6 +11,10 @@ email:
 password:
   regex: ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?/~_+=|]).{8,32}$
   invalid: Password invalid
+
+openapi:
+  dev-url: http://localhost:8080
+  prod-url: https://localhost:8080
  
 spring:
   jpa:
