@@ -1,10 +1,12 @@
 package com.nisum.user.domain.use_case;
 
 import com.nisum.user.domain.annotation.UseCase;
+import com.nisum.user.domain.driven_port.JwtTokenPort;
 import com.nisum.user.domain.driven_port.PhoneRepository;
 import com.nisum.user.domain.driven_port.UserRepository;
 import com.nisum.user.domain.exception.UserException;
 import com.nisum.user.domain.model.Phone;
+import com.nisum.user.domain.model.TokenDetail;
 import com.nisum.user.domain.model.User;
 import com.nisum.user.domain.value_object.Id;
 
@@ -19,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PhoneRepository phoneRepository;
+    private final JwtTokenPort jwtTokenPort;
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -32,10 +35,16 @@ public class UserServiceImpl implements UserService {
         user.setId(Id.make());
         user.setLastLogin(LocalDateTime.now());
         user.setIsActive(true);
-        user.setToken("token");
+
+        TokenDetail tokenDetail = TokenDetail.builder()
+                                             .id(user.getId().getValue().toString())
+                                             .name(user.getName())
+                                             .email(user.getEmail().getValue()).build();
+
+        user.setToken(jwtTokenPort.createToken(tokenDetail));
         User userSaved =  userRepository.save(user);
         
-        user.getPhones().stream().forEach(p -> {
+        user.getPhones().forEach(p -> {
             p.setId(Id.make());
             p.setUserId(userSaved.getId());
         });

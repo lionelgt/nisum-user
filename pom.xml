@@ -9,6 +9,7 @@
         <module>domain</module>
         <module>infrastructure/entry-points/rest-api</module>
         <module>infrastructure/driven-adapters/jpa-repository</module>
+        <module>infrastructure/driven-adapters/security-provider</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

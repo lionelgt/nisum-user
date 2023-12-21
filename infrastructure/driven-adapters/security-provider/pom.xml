@@ -6,10 +6,11 @@
         <artifactId>parent</artifactId>
         <groupId>com.nisum.user</groupId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>application</artifactId>
+    <artifactId>security-provider</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,19 +20,32 @@
     <dependencies>
         <dependency>
             <groupId>com.nisum.user</groupId>
-            <artifactId>rest-api</artifactId>
+            <artifactId>domain</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>com.nisum.user</groupId>
-            <artifactId>jpa-repository</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.1</version>
         </dependency>
         <dependency>
-            <groupId>com.nisum.user</groupId>
-            <artifactId>security-provider</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.1</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-    
+
 </project>

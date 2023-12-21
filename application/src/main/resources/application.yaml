@@ -1,4 +1,9 @@
 
+security:
+  jwt:
+    base64-secret: ZWI0YzMwMmUzODE2ZDFlNGIxZDUwZDdkZDI0NTY5ZDlmMWI4YTEwNzIxMWEzOTExM2E1ZmQ1YzE3Yzg5MmM3YzY4YTgwODEzZTMxOTEyZDE3OWU0YTQzZTQyZjJkNjI1MmMxYmI3MzQyY2Q4MGM3NWEyMzc0YzI1MmVjZTljZjk=
+    token-validity-in-seconds: 900
+
 email:
   exist: El correo ya fue registrado
   regex: ^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$
